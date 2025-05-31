@@ -2,6 +2,18 @@
 // Allow local development access
 define('ALLOWED_ACCESS', true);
 
+// Add CORS headers for cross-origin requests
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Content-Type: application/json');
+
+// Handle preflight OPTIONS request
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 // Prevent direct access to this file
 if (!defined('ALLOWED_ACCESS') && 
     (!isset($_SERVER['HTTP_REFERER']) || 
@@ -53,9 +65,11 @@ $config = [
     'devMode' => true
 ];
 
-// Set JSON content type header
-header('Content-Type: application/json');
-
-// Output the configuration as JSON
-echo json_encode($config);
+// Output the configuration as JSON with proper error handling
+try {
+    echo json_encode($config, JSON_THROW_ON_ERROR);
+} catch (JsonException $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Configuration encoding failed']);
+}
 ?>

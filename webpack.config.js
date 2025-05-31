@@ -16,7 +16,7 @@ module.exports = (env, argv) => {
       library: 'KiaanVoiceOrb',
       libraryTarget: 'umd',
       libraryExport: 'default',
-      publicPath: '',
+      publicPath: './', // Change from '' to './' for better relative path handling
       clean: true,
       // Add globalObject for better UMD compatibility
       globalObject: 'typeof self !== \'undefined\' ? self : this'
@@ -74,6 +74,18 @@ module.exports = (env, argv) => {
       ]
     },
     devtool: isProduction ? false : 'source-map',
+    devServer: {
+      static: {
+        directory: path.join(__dirname, 'dist'),
+      },
+      compress: true,
+      port: 8080,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+        'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+      }
+    },
     resolve: {
       extensions: ['.js', '.css'],
       alias: {
