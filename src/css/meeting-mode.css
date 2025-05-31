@@ -1,0 +1,55 @@
+.kiaan-meeting-header {
+  background: linear-gradient(135deg, 
+    rgba(58, 143, 254, 0.1) 0%, 
+    rgba(146, 89, 254, 0.1) 100%);
+  border: 1px solid rgba(58, 143, 254, 0.2);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.kiaan-meeting-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3a8ffe 0%, #9259fe 100%);
+}
+
+.kiaan-meeting-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  background: linear-gradient(135deg, #3a8ffe 0%, #9259fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.kiaan-meeting-header p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .kiaan-meeting-header {
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  
+  .kiaan-meeting-header h3 {
+    font-size: 18px;
+  }
+  
+  .kiaan-meeting-header p {
+    font-size: 13px;
+  }
+}

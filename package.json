@@ -1,0 +1,34 @@
+{
+  "name": "kiaan-voice-orb",
+  "version": "1.0.0",
+  "description": "Embeddable floating draggable Voice Orb Widget for any website",
+  "main": "dist/kiaan-voice-orb.min.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "voice",
+    "chat",
+    "AI",
+    "widget",
+    "elevenlabs"
+  ],
+  "author": "Kiaan",
+  "license": "MIT",
+  "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

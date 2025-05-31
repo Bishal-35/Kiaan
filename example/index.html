@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiaan Voice Orb Example</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #333;
+    }
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .box {
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Kiaan Voice Orb Widget Demo</h1>
+    
+    <div class="box">
+      <h2>About this demo</h2>
+      <p>This page demonstrates the Kiaan Voice Orb Widget functionality. The orb appears in the bottom-right corner and can be:</p>
+      <ul>
+        <li>Dragged around the screen</li>
+        <li>Clicked to open the interactive panel</li>
+        <li>Used to interact with voice and text chat interfaces</li>
+      </ul>
+    </div>
+    
+    <div class="box">
+      <h2>Usage Instructions</h2>
+      <p>Try dragging the orb to reposition it. Click on the orb to open the panel. Inside the panel, you can switch between Voice Chat, Meeting, and Text Chat modes.</p>
+    </div>
+    
+    <!-- Add some dummy content to make the page scrollable -->
+    <div class="box">
+      <h2>Scroll Down</h2>
+      <p>Scroll down to see how the orb stays fixed at the bottom-right corner.</p>
+    </div>
+    
+    <!-- Generate some dummy paragraphs -->
+    <div class="box">
+      <h2>More Content</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at justo vel nisi consequat tempus eget non libero. Proin egestas, odio in scelerisque convallis, enim nisi ultrices tortor, id placerat eros nibh a justo.</p>
+      <p>Donec convallis leo at augue lobortis, non commodo nulla tincidunt. Suspendisse potenti. Fusce tincidunt, justo vel consequat ultricies, enim eros sollicitudin magna, eget dapibus eros mauris eu velit.</p>
+      <p>Morbi ultrices erat in nunc gravida, eu efficitur nibh varius. Proin id eros vel est suscipit aliquam. Aenean gravida magna vel metus ultrices, eget volutpat magna dictum.</p>
+    </div>
+  </div>
+  
+  <!-- Load the Kiaan Voice Orb script -->
+  <script src="../dist/kiaan-voice-orb.min.js"></script>
+  <link rel="stylesheet" href="../dist/kiaan-voice-orb.min.css">
+  <script>
+    // Initialize the widget when page is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Initializing Kiaan Voice Orb...');
+      
+      // Initialize with a dummy config for testing
+      KiaanVoiceOrb.init({
+        config: {
+          agents: {
+            chat: { id: 'test-chat-id', voice_id: 'voice-id-a' },
+            meeting: { id: 'test-meeting-id', voice_id: 'voice-id-b' }
+          },
+          webhooks: {
+            text_chat: 'https://httpbin.org/post',
+            file_upload: 'https://httpbin.org/post'
+          },
+          settings: {
+            max_file_size: 10485760,
+            allowed_file_types: ['.jpg', '.jpeg', '.png', '.pdf', '.csv', '.doc', '.docx']
+          },
+          // Enable development mode explicitly
+          devMode: true
+        }
+      });
+    });
+  </script>
+</body>
+</html>

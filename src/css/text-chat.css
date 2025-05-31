@@ -1,0 +1,201 @@
+.kiaan-text-chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: white;
+}
+
+.kiaan-text-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 8px;
+  margin-bottom: 12px;
+}
+
+.kiaan-message {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.kiaan-message-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.user-message .kiaan-message-avatar {
+  background-color: rgba(79, 124, 255, 0.2);
+}
+
+.assistant-message .kiaan-message-avatar {
+  background-color: rgba(157, 78, 221, 0.2);
+}
+
+.system-message .kiaan-message-avatar {
+  background-color: rgba(255, 77, 77, 0.2);
+}
+
+.kiaan-message-bubble {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 14px;
+  border-radius: 18px;
+  max-width: 80%;
+  word-break: break-word;
+}
+
+.user-message .kiaan-message-bubble {
+  background-color: rgba(79, 124, 255, 0.3);
+}
+
+.assistant-message .kiaan-message-bubble {
+  background-color: rgba(157, 78, 221, 0.3);
+}
+
+.system-message .kiaan-message-bubble {
+  background-color: rgba(255, 77, 77, 0.3);
+}
+
+.attachment-message {
+  font-style: italic;
+}
+
+.kiaan-text-input-area {
+  display: flex;
+  align-items: flex-end;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 8px 16px;
+  margin-top: auto;
+}
+
+.kiaan-text-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  resize: none;
+  padding: 8px 0;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.kiaan-text-input:focus {
+  outline: none;
+}
+
+.kiaan-text-input::placeholder {
+  color: rgba(0, 0, 0, 0.219);
+}
+
+.kiaan-attach-button,
+.kiaan-send-button {
+  background: none;
+  border: none;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.kiaan-attach-button:hover,
+.kiaan-send-button:hover {
+  color: rgb(0, 0, 0);
+}
+
+.kiaan-attach-button:disabled,
+.kiaan-send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.kiaan-attachment-preview {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.kiaan-attachment {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 4px 8px;
+  max-width: 200px;
+}
+
+.kiaan-attachment-icon {
+  width: 32px;
+  height: 32px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  font-size: 10px;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.kiaan-attachment-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kiaan-attachment-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+}
+
+.kiaan-attachment-remove {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 4px;
+  margin-left: 4px;
+}
+
+.kiaan-upload-progress-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 8px 0;
+  position: relative;
+}
+
+.kiaan-upload-progress {
+  height: 4px;
+  background: linear-gradient(135deg, #4f7cff 0%, #9d4edd 100%);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.3s;
+}
+
+.kiaan-upload-progress-text {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
