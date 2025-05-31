@@ -208,7 +208,6 @@ class TextChat {
       }
       
       .kiaan-text-input-area {
-        background: #000;     /* White input area */
         display: flex;
         align-items: center;
         border-radius: 4px;
@@ -217,7 +216,6 @@ class TextChat {
       }
       
       .kiaan-text-input {
-        color: #212529;       /* Dark text in input */
         background: transparent;
         flex: 1;
         border: none;
@@ -228,12 +226,9 @@ class TextChat {
         outline: none;
       }
       
-      .kiaan-text-input::placeholder {
-        color: rgb(0, 0, 0);  /* BLACK placeholder text - THIS IS THE ISSUE */
-      }
+      
       
       .kiaan-attach-button, .kiaan-send-button {
-        background: #000;
         border: none;
         cursor: pointer;
         padding: 8px;

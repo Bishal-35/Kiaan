@@ -71,7 +71,7 @@
 .kiaan-text-input-area {
   display: flex;
   align-items: flex-end;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 253, 253);
   border-radius: 24px;
   padding: 8px 16px;
   margin-top: auto;
@@ -101,7 +101,7 @@
 .kiaan-send-button {
   background: none;
   border: none;
-  color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0); /* Icons color */
   cursor: pointer;
   padding: 8px;
   display: flex;
@@ -112,7 +112,7 @@
 
 .kiaan-attach-button:hover,
 .kiaan-send-button:hover {
-  color: rgb(0, 0, 0);
+  color: rgb(116, 115, 115);
 }
 
 .kiaan-attach-button:disabled,

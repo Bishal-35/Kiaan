@@ -24,9 +24,15 @@
       padding: 20px;
       margin-bottom: 20px;
     }
+    .error-box {
+      background-color: #fee;
+      border: 1px solid #fcc;
+      color: #c33;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
   </style>
-  <!-- Load the CSS file built by webpack -->
-  <link rel="stylesheet" href="../dist/kiaan-voice-orb.min.css">
 </head>
 <body>
   <div class="content">
@@ -62,16 +68,51 @@
     </div>
   </div>
   
-  <!-- Load the JavaScript file built by webpack -->
-  <script src="../dist/kiaan-voice-orb.min.js"></script>
   <script>
-    // Initialize the widget when page is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOM loaded, initializing Kiaan Voice Orb...');
-      
+    // Check if files exist before loading
+    function loadScript(src, callback) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = callback;
+      script.onerror = function() {
+        console.error(`Failed to load script: ${src}`);
+        showError(`Failed to load ${src}. Please run 'npm run build' to generate the required files.`);
+      };
+      document.head.appendChild(script);
+    }
+
+    function loadCSS(href) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.onerror = function() {
+        console.error(`Failed to load CSS: ${href}`);
+        showError(`Failed to load CSS file. Please run 'npm run build' to generate the required files.`);
+      };
+      document.head.appendChild(link);
+    }
+
+    function showError(message) {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error-box';
+      errorDiv.innerHTML = `<strong>Error:</strong> ${message}`;
+      document.body.insertBefore(errorDiv, document.body.firstChild);
+    }
+
+    // Load CSS first
+    loadCSS('../dist/kiaan-voice-orb.min.css');
+
+    // Then load JavaScript
+    loadScript('../dist/kiaan-voice-orb.min.js', function() {
+      console.log('Kiaan Voice Orb script loaded successfully');
+      initializeOrb();
+    });
+
+    function initializeOrb() {
       // Check if KiaanVoiceOrb is available
       if (typeof KiaanVoiceOrb === 'undefined') {
         console.error('KiaanVoiceOrb is not loaded. Check if the script path is correct.');
+        showError('KiaanVoiceOrb library not found. Please ensure the build files are generated.');
         return;
       }
       
@@ -99,21 +140,15 @@
         console.log('Kiaan Voice Orb initialization completed');
       } catch (error) {
         console.error('Failed to initialize Kiaan Voice Orb:', error);
+        showError(`Initialization failed: ${error.message}`);
       }
-    });
-    
-    // Fallback initialization if DOMContentLoaded already fired
-    if (document.readyState === 'loading') {
-      // Document is still loading, wait for DOMContentLoaded
-    } else {
-      // Document has already loaded
-      setTimeout(() => {
-        if (typeof KiaanVoiceOrb !== 'undefined' && !KiaanVoiceOrb.orb) {
-          console.log('Fallback initialization triggered');
-          // Trigger initialization logic here if needed
-        }
-      }, 100);
     }
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM loaded, checking for Kiaan Voice Orb...');
+      // The script loading is handled above
+    });
   </script>
 </body>
 </html>
