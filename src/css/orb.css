@@ -7,15 +7,17 @@
   border-radius: 50%;
   background: linear-gradient(135deg, #3a8ffe 0%, #9259fe 100%);
   box-shadow: 0 6px 16px rgba(59, 143, 254, 0.4);
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 9998;
+  z-index: 999999;
   user-select: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: pulse 3s infinite;
   touch-action: none;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .kiaan-voice-orb:hover {

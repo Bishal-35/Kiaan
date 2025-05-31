@@ -6,6 +6,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
   
+  console.log(`Building in ${isProduction ? 'PRODUCTION' : 'DEVELOPMENT'} mode`);
+  
   return {
     entry: './src/js/index.js',
     output: {
@@ -15,7 +17,9 @@ module.exports = (env, argv) => {
       libraryTarget: 'umd',
       libraryExport: 'default',
       publicPath: '',
-      clean: true  // Clean dist folder before each build
+      clean: true,
+      // Add globalObject for better UMD compatibility
+      globalObject: 'typeof self !== \'undefined\' ? self : this'
     },
     module: {
       rules: [
@@ -58,7 +62,8 @@ module.exports = (env, argv) => {
           extractComments: false,
           terserOptions: {
             compress: {
-              drop_console: false, // Keep console statements in production
+              drop_console: false, // Keep console statements for debugging
+              drop_debugger: isProduction, // Remove debugger in production
             },
             format: {
               comments: false,

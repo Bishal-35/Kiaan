@@ -291,7 +291,7 @@ class VoiceChat {
     // Add welcome message
     this.handleTranscript({
       role: 'assistant',
-      content: 'I\'m using a simplified voice conversation mode. How can I help you today?'
+      content: 'Hello! I\'m your voice assistant. I\'m ready to help you today. Click "Start Conversation" to begin our chat!'
     });
     
     this.updateStatus('disconnected', 'Ready to start. Click the button below.');
@@ -339,6 +339,12 @@ class VoiceChat {
         
         // Initialize speech recognition
         this.initializeSpeechRecognition();
+        
+        // Add welcome message for ElevenLabs mode
+        this.handleTranscript({
+          role: 'assistant',
+          content: 'Hello! I\'m your AI voice assistant powered by ElevenLabs. I\'m ready to have a conversation with you!'
+        });
         
         this.updateStatus('disconnected', 'Ready to start. Click the button below.');
       } catch (error) {
