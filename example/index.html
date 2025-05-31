@@ -67,28 +67,53 @@
   <script>
     // Initialize the widget when page is loaded
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('Initializing Kiaan Voice Orb...');
+      console.log('DOM loaded, initializing Kiaan Voice Orb...');
+      
+      // Check if KiaanVoiceOrb is available
+      if (typeof KiaanVoiceOrb === 'undefined') {
+        console.error('KiaanVoiceOrb is not loaded. Check if the script path is correct.');
+        return;
+      }
       
       // Initialize with a dummy config for testing
-      KiaanVoiceOrb.init({
-        config: {
-          agents: {
-            chat: { id: 'test-chat-id', voice_id: 'voice-id-a' },
-            meeting: { id: 'test-meeting-id', voice_id: 'voice-id-b' }
-          },
-          webhooks: {
-            text_chat: 'https://httpbin.org/post',
-            file_upload: 'https://httpbin.org/post'
-          },
-          settings: {
-            max_file_size: 10485760,
-            allowed_file_types: ['.jpg', '.jpeg', '.png', '.pdf', '.csv', '.doc', '.docx']
-          },
-          // Enable development mode explicitly
-          devMode: true
-        }
-      });
+      try {
+        KiaanVoiceOrb.init({
+          config: {
+            agents: {
+              chat: { id: 'test-chat-id', voice_id: 'voice-id-a' },
+              meeting: { id: 'test-meeting-id', voice_id: 'voice-id-b' }
+            },
+            webhooks: {
+              text_chat: 'https://httpbin.org/post',
+              file_upload: 'https://httpbin.org/post'
+            },
+            settings: {
+              max_file_size: 10485760,
+              allowed_file_types: ['.jpg', '.jpeg', '.png', '.pdf', '.csv', '.doc', '.docx']
+            },
+            // Enable development mode based on environment
+            devMode: window.location.hostname.includes('localhost') || 
+                    window.location.protocol === 'file:'
+          }
+        });
+        console.log('Kiaan Voice Orb initialization completed');
+      } catch (error) {
+        console.error('Failed to initialize Kiaan Voice Orb:', error);
+      }
     });
+    
+    // Fallback initialization if DOMContentLoaded already fired
+    if (document.readyState === 'loading') {
+      // Document is still loading, wait for DOMContentLoaded
+    } else {
+      // Document has already loaded
+      setTimeout(() => {
+        if (typeof KiaanVoiceOrb !== 'undefined' && !KiaanVoiceOrb.orb) {
+          console.log('Fallback initialization triggered');
+          // Trigger initialization logic here if needed
+        }
+      }, 100);
+    }
   </script>
 </body>
 </html>

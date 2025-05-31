@@ -57,6 +57,9 @@ module.exports = (env, argv) => {
         new TerserPlugin({
           extractComments: false,
           terserOptions: {
+            compress: {
+              drop_console: false, // Keep console statements in production
+            },
             format: {
               comments: false,
             },
