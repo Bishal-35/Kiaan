@@ -14,7 +14,8 @@ module.exports = (env, argv) => {
       library: 'KiaanVoiceOrb',
       libraryTarget: 'umd',
       libraryExport: 'default',
-      publicPath: ''
+      publicPath: '',
+      clean: true  // Clean dist folder before each build
     },
     module: {
       rules: [

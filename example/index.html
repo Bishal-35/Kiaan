@@ -25,6 +25,8 @@
       margin-bottom: 20px;
     }
   </style>
+  <!-- Load the CSS file built by webpack -->
+  <link rel="stylesheet" href="../dist/kiaan-voice-orb.min.css">
 </head>
 <body>
   <div class="content">
@@ -60,9 +62,8 @@
     </div>
   </div>
   
-  <!-- Load the Kiaan Voice Orb script -->
-  <script src="../public/kiaan-voice-orb.min.js"></script>
-  <link rel="stylesheet" href="../public/kiaan-voice-orb.min.css">
+  <!-- Load the JavaScript file built by webpack -->
+  <script src="../dist/kiaan-voice-orb.min.js"></script>
   <script>
     // Initialize the widget when page is loaded
     document.addEventListener('DOMContentLoaded', function() {
